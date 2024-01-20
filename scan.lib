@@ -1,0 +1,26 @@
+#!/bin/bash
+
+nmap_scan()
+{
+    nmap -A $DOMAIN > $DIRECTORY/nmap
+    echo "The results of nmap scan are stored in $DIRECTORY/nmap."
+}
+
+
+feroxbuster_scan()
+{
+    feroxbuster -u https://$DOMAIN -w /usr/share/seclists/Discovery/Web-Content/raft-large-directories.txt -o $DIRECTORY/feroxbuster
+    echo "The results of feroxbuster scan are stored in $DIRECTORY/feroxbuster."
+}
+
+gobuster_scan()
+{
+    gobuster dns -d $DOMAIN -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -o $DIRECTORY/gobuster
+    echo "The results of Gobuster scan are stored in $DIRECTORY/gobuster."
+}
+crt_scan()
+{
+    curl "https://crt.sh/?q=$DOMAIN&output=json" -o $DIRECTORY/crt
+    echo "The results of cert parsing is stored in $DIRECTORY/crt."
+}
+    
