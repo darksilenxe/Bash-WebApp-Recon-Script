@@ -21,15 +21,11 @@ do
     gobuster-only)
         gobuster_scan
         ;;
-    amass_only)
-        amass_scan
-        ;;
     *)
         nmap_scan
         feroxbuster_scan
         crt_scan
         gobuster_scan
-        amass_scan
         ;;
     esac
     echo "Generating recon for $DOMAIN..."
