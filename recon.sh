@@ -51,9 +51,5 @@ do
         echo "Results for crt.sh:" >> $DIRECTORY/report
         jq -r ".[] | .name_value" $DIRECTORY/crt >> $DIRECTORY/report
     fi
-    if [ -f $DIRECTORY/amass ];then
-        echo "Results for Amass:" >> $DIRECTORY/report
-        cat $DIRECTORY/amass >> $DIRECTORY/report
-    fi
 done
     
